@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv
+spec:
+  capacity:
+    storage: 5Gi  # 大小
+  volumeMode: Filesystem # pv 的模型
+  accessModes:
+    - ReadWriteMany  # 写的格式
+  persistentVolumeReclaimPolicy: Recycle # 回收策略
+  storageClassName: slow  # 存储的名词
+  nfs:
+    path: /nfsdata
+    server: 192.168.31.50
